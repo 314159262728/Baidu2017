@@ -1,0 +1,48 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+label{
+  display: block;
+  line-height: 40px;
+  margin-top: 10px;
+}
+span{
+  width: 25%;
+  text-align: right;
+  float: left;
+  padding-right: 2%;
+}
+input{
+  border-radius: 5px;
+  width: 48%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+button{
+  width: 10%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+  background-color: #5151A2;
+  color: white;
+  margin-left: 65%;
+}
+p{
+  padding-left: 27%;
+  width: 75%;
+  height: 20px;
+  color: #8B7B8B;
+}
+.green{
+  color: #0B0;
+}
+.red{
+  color: red;
+}
+.redborder{
+  border: 1px solid red;
+}
+.greenborder{
+  border: 1px solid #0B0;
+}
