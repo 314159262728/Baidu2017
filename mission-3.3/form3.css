@@ -1,0 +1,26 @@
+label{
+  float: left;
+  width: 50%;
+}
+#stuYes,#stuNo{
+  margin-left: 10%;
+}
+form{
+  margin-top: 50px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.hidden{
+  display: none;
+}
+div{
+  padding-top: 50px;
+}
+select{
+  clear:both;
+  width: 40%;
+  border-radius: 3px;
+}
+#text{
+  width: 60%;
+}
