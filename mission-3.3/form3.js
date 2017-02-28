@@ -37,6 +37,8 @@
   //城市发生变化，学校随之改变
   citySelect.addEventListener("change",function(){
     schoolSelect.innerHTML=""//清空学校的option
+    cvalue=citySelect.value;
+    schoolArray=cityschoolJson.school[cvalue];
     for(var j=0; j<schoolArray.length; j++){
       var sopt=document.createElement("option");
       var stext = document.createTextNode(schoolArray[j]);
