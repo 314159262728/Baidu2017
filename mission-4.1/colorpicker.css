@@ -50,8 +50,13 @@ hr{
   margin-top: 10px;
   float: right;
 }
+#show{
+  width: 110px;
+  height: 28px;
+  float: right;
+}
 .colorRH{
-  margin-top: 10px;
+  margin-top: 5px;
   width: 110px;
   height: 40px;
   float: right;
