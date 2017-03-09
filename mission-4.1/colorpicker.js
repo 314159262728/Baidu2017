@@ -29,6 +29,8 @@ odrag.style.top = "0px";
   var grdt = ctx.createLinearGradient(0,0,300,300);
   grdt.addColorStop(0,"rgba(255,255,255,1)");
   grdt.addColorStop(1,"rgb("+list[0]+","+list[1]+","+list[2]+")")
+  document.getElementById("show").style.backgroundColor="rgb("+list[0]+","+list[1]+","+list[2]+")";
+
   ctx.fillStyle = grdt;
   ctx.fillRect(0,0,300,300);
   var grdtx = ctx.createLinearGradient(0,0,0,300);
@@ -215,27 +217,30 @@ function circleposHSL(s,l){
     var posX=parseInt(circle.style.left.replace("px",""));
     var posY=parseInt(circle.style.top.replace("px",""));
     if((listH[1]-s<0.05&&s-listH[1]<0.05)&&(listH[2]-l<0.05&&l-listH[2]<0.05)){
-      bool=false;
       document.getElementById("show").style.backgroundColor="rgb("+list[0]+","+list[1]+","+list[2]+")";
+      bool=false;
+      break;
     }
     else{
-      if(listH[1]<s-0.05){
-        circle.style.left=parseInt(circle.style.left.replace("px",""))+3+"px";
+      if( listH[2]<l){
+        circle.style.left=parseInt(circle.style.left.replace("px",""))-3+"px";
+        circle.style.top=parseInt(circle.style.top.replace("px",""))-3+"px";
       }
-      if(listH[1]>s+0.05){
+       if(listH[1]>s){
         circle.style.left=parseInt(circle.style.left.replace("px",""))-3+"px";
       }
-      if(listH[2]>l+0.05){
-        circle.style.top=parseInt(circle.style.top.replace("px",""))+3+"px";
+       if(listH[1]<s){
+        circle.style.left=parseInt(circle.style.left.replace("px",""))+3+"px";
       }
-      if(listH[2]<l-0.05){
-        circle.style.top=parseInt(circle.style.top.replace("px",""))-3+"px";
+       if( listH[2]>l){
+         circle.style.left=parseInt(circle.style.left.replace("px",""))+3+"px";
+         circle.style.top=parseInt(circle.style.top.replace("px",""))+3+"px";
+       }
 
-      }
     }
-    if(posX<=offleft||posX>=offleft+290||posY<=offtop||posY>=offleft+290){
+    if(posX<=offleft+5||posX>=offleft+295||posY<=offtop+5||posY>=offleft+295){
      bool=false;
-     document.getElementById("show").style.backgroundColor="rgb("+list[0]+","+list[1]+","+list[2]+")";     
+     document.getElementById("show").style.backgroundColor="rgb("+list[0]+","+list[1]+","+list[2]+")";
    }
   }
 }
