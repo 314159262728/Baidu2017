@@ -1,0 +1,91 @@
+body{
+  background-color: black;
+}
+
+#div{
+  width: 30%;
+  height: 220px;
+  position: absolute;
+  left:35%;
+  background-color: white;
+  margin-top: 150px;
+  background-image: url(http://pic27.nipic.com/20130130/11902794_104755489196_2.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 90% 85%;
+  -moz-background-size: 90% 85%;
+  -webkit-background-size:90% 85%;
+  -o-background-size:90% 85%;
+}
+.vague{
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+
+#font::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 0;
+    border: 3px solid white;
+    border-width: 0 3px;
+    overflow: hidden;
+    visibility: hidden;
+    transition: all .8s;
+    box-sizing: border-box;
+}
+#font:hover::before{
+  top:0;
+  height: 100%;
+  visibility: visible;
+}
+
+#font::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 0;
+  height: 100%;
+  border: 5px solid white;
+  border-width: 5px 0;
+  overflow: hidden;
+  visibility: hidden;
+  transition: all 0.8s;
+  box-sizing: border-box;
+}
+#font:hover::after{
+  left:0;
+  width: 100%;
+  visibility: visible;
+}
+#font {
+  width: 20%;
+  height: 100px;
+  padding-top:10px;
+  position: relative;
+  top:200px;
+  left:40%;
+}
+#font p{
+  text-align: center;
+  background-image: -webkit-linear-gradient(left, blue, red 25%, blue 50%, red 75%, blue 100%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  animation: stream 3s infinite linear;
+  background-size: 200% 100%;
+}
+
+@keyframes stream {
+    0%  {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+}

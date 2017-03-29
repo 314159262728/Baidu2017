@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>有趣的鼠标悬浮模糊效果</title>
+    <link rel="stylesheet" href="cssvague.css">
+  </head>
+  <body>
+    <div id="div"></div>
+    <div id="font"  style="display:none">
+      <p>欢迎参加百度前端技术学院</p>
+      <p>点击报名</p>
+    </div>
+    <script type="text/javascript">
+      document.getElementById("div").addEventListener("mouseover",function(){
+        this.className="vague";
+        document.getElementById("font").style.display="block";
+      })
+    </script>
+  </body>
+</html>
