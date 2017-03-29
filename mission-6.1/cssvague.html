@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>有趣的鼠标悬浮模糊效果</title>
     <link rel="stylesheet" href="cssvague.css">
+    <script src="jquery-3.1.1.min.js" charset="utf-8"></script>
   </head>
   <body>
     <div id="div"></div>
@@ -12,9 +13,19 @@
       <p>点击报名</p>
     </div>
     <script type="text/javascript">
-      document.getElementById("div").addEventListener("mouseover",function(){
-        this.className="vague";
+      $("#div").hover(function(){
+        $('#div').addClass("vague");
         document.getElementById("font").style.display="block";
+      })
+      $("#font").hover(function(event){},function(event){
+        setInterval(function(){
+          document.getElementById("font").style.visibility="hidden";
+        },1000)
+        if($('#div').hasClass("vague")){
+            $('#div').removeClass("vague");
+            $('#div').addClass("clear");
+        }
+
       })
     </script>
   </body>
