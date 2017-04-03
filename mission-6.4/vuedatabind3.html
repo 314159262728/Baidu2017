@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>动态数据绑定二</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+    function Observer(data,path,clientList){
+      this.data=data;
+      this.clientList=clientList||[];
+      this.allName=[];
+      this.path=path;
+      this.walk(data);
+    }
+    Observer.prototype.walk=function(data){
+      let val;
+      for(let key in data){
+        if(data.hasOwnProperty(key)){
+          val=data[key];
+          this.allName[key]=(this.path?this.path:"")+"."+key;
+          this.clientList[key]=[];
+          if(typeof val ==='object'){
+            new Observer(val,this.allName[key],this.clientList);
+          }
+          this.convert(data,key,val);
+        }
+      }
+    }
+
+    Observer.prototype.convert = function(data,key,value){
+      var el=this;
+      Object.defineProperty(data,key,{
+        configurable:true,
+        numberable:true,
+        get:function(){
+          console.log("您访问了"+key);
+          return value;
+        },
+        set:function(newValue){
+          console.log("您设置了"+key+",为"+newValue);
+          if(value===newValue){
+          } else if(typeof newValue=='object'){
+            new Observer(newValue,el.allName[key],el.clientList);
+            var list=el.allName[key].split(".")
+            for(var i=0;i<list.length;i++){
+              el.publish(list[i])
+            }
+          } else{
+            value = newValue;
+            var list=el.allName[key].split(".");
+            for(var i=0;i<list.length;i++)
+            {
+              el.publish(list[i])
+            }
+        }
+          return newValue;
+        }
+      });
+    }
+      Observer.prototype.publish=function(key){
+        if(typeof this.clientList[key]=='undefined'){
+
+        } else{
+          var fns=this.clientList[key];
+          var t=0;
+          for (var fn; fn=fns[t++]; ) {
+            fn.apply(this, arguments);
+        }
+        }
+      }
+      Observer.prototype.$watch=function(key,fn){
+        this.clientList[key].push(fn)
+      }
+      let app2 = new Observer({
+        name: {
+            firstName: 'shaofeng',
+            lastName: 'liang'
+        },
+        age: 25
+      },"app2");
+
+
+      app2.$watch('name', function (newName) {
+          console.log('我的姓名发生了变化，可能是姓氏变了，也可能是名字变了。')
+      });
+
+    </script>
+  </body>
+</html>
