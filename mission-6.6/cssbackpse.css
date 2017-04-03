@@ -1,0 +1,128 @@
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  p{
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  div{
+    width: 200px;
+    height: 40px;
+    margin: 0 auto;
+    background-color: rgb(225,225,225);
+    padding-left: 10px;
+  }
+  span{
+    font-weight: bold;
+    font-size: 20px;
+  }
+  label{
+    width: 0;
+    height: 0;
+    position: relative;
+    border: 1px solid transparent;
+    left:-2px;
+    top:-1px;
+  }
+  .radio::before{
+    content: "";
+    position: absolute;
+    left:-13px;
+    top:0px;
+    width: 11px;
+    height: 11px;
+    border:1px solid red;
+    border-radius: 50%;
+    visibility: hidden;
+  }
+  input{
+    float: left;
+  }
+  input:checked+label::after{
+      visibility: visible;
+    }
+  input:checked+label::before{
+      visibility: visible;
+    }
+  input:checked{
+    visibility: hidden;
+  }
+  .radio::after{
+    content: "";
+    position: absolute;
+    top:3.5px;
+    left:-9.5px;
+    width: 6px;
+    height: 6px;
+    background-color: red;
+    border-radius: 50%;
+    visibility: hidden;
+  }
+  /*checkbox*/
+  #lacheck::before{
+    content: "";
+    position: absolute;
+    top:0px;
+    left:-13px;
+    width: 11px;
+    height: 11px;
+    border:1px solid red;
+    border-radius: 2px;
+    visibility: hidden;
+  }
+  #checkbox:checked+label::after{
+    visibility: visible;
+  }
+  #checkbox:checked+label::before{
+    visibility: visible;
+  }
+  #checkbox:checked{
+    visibility: hidden;
+  }
+  #lacheck::after{
+    content: "";
+    position: absolute;
+    top:1.5px;
+    left:-12px;
+    width: 8px;
+    height: 4px;
+    border: 2.5px solid red;
+    border-top: 0;
+    border-right: 0;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    visibility: hidden;
+  }
+
+  #divbaradio1 label,  #divbaradio2 label{
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background-image: url('bg.png');
+    border: none;
+    background-position: -58px -11px;
+    background-repeat: no-repeat;
+    visibility: hidden;
+    position: relative;
+    left:-13px;
+  }
+  #divbacheckbox label{
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background-image: url('bg.png');
+    border: none;
+    background-position: -58px -31px;
+    background-repeat: no-repeat;
+    visibility: hidden;
+    position: relative;
+    left:-13px;
+  }
+  #radio3:checked+label,#radio4:checked+label,#checkbox2:checked+label{
+    visibility: visible;
+  }
