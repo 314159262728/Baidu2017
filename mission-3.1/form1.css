@@ -19,13 +19,31 @@ input{
   padding-top: 10px;
   padding-bottom: 10px;
 }
-button{
+#pswDiv{
+  border-radius: 5px;
+  width: 20%;
+  height: 10px;
+  margin-top: 5px;
+  margin-left: 27%;
+  background-color: #8B7B8B;
+  display: inline-block;
+}
+.check{
   width: 10%;
   padding-top: 10px;
   padding-bottom: 10px;
   border-radius: 5px;
   background-color: #5151A2;
   color: white;
+}
+#login, #lock{
+  margin-top: 10px;
+  margin-left: 27%;
+  width: 15%;
+  line-height: 20px;
+}
+#hobby>input, #sex>input{
+  width: 4%;
 }
 p{
   padding-left: 27%;
