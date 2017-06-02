@@ -80,7 +80,7 @@ eg.regCheck = function () {
 
 
 };
-//检查是否锁定
+//检查是否要锁定
 eg.lock = function () {
     if(errNUM>errMAX){
         eg.$("login").disabled = true;
