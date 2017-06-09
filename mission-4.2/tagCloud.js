@@ -46,16 +46,23 @@ function tagStyle(){
 }
 function rotateX(){
   for(var i=1; i<max+1; i++){
-    mcList[i-1].cy = mcList[i-1].cy* Math.cos(α) - mcList[i-1].cz * Math.sin(α);
-    mcList[i-1].cz = mcList[i-1].cy * Math.sin(α) + mcList[i-1].cz * Math.cos(α);
+      var x = mcList[i-1].cx;
+      var y = mcList[i-1].cy;
+      var z = mcList[i-1].cz;
+      mcList[i-1].cy = y* Math.cos(α) - z * Math.sin(α);
+      mcList[i-1].cz = y * Math.sin(α) + z * Math.cos(α);
   }
 }
 function rotateY(){
   for(var i=1; i<max+1; i++){
-    mcList[i-1].cz = mcList[i-1].cz * Math.cos(β) - mcList[i-1].cx * Math.sin(β);
-    mcList[i-1].cx = mcList[i-1].cz * Math.sin(β) + mcList[i-1].cx * Math.cos(β);
+      var x = mcList[i-1].cx;
+      var y = mcList[i-1].cy;
+      var z = mcList[i-1].cz;
+      mcList[i-1].cz = z * Math.cos(β) - x * Math.sin(β);
+      mcList[i-1].cx = z * Math.sin(β) + x * Math.cos(β);
   }
 }
+
 tagdiv.addEventListener("mouseover",function(){
   α = -Math.PI/100;
   β = -Math.PI/100;
@@ -68,7 +75,7 @@ tagdiv.addEventListener("mouseleave",function(){
 initags();
 initpos();
 setInterval(function(){
-  rotateX();
-  rotateY();
-  tagStyle();
-},1000)
+    rotateX();
+    rotateY();
+    tagStyle();
+},1)
