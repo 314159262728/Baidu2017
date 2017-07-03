@@ -7,19 +7,22 @@ const smallcanvas = document.getElementById("smallcanvas");
 const  bigctx = bigcanvas.getContext("2d");
 const  smallctx = smallcanvas.getContext("2d");
 var isbigDrag, issmallDrag, x,y;
+var scale,selWidth,selHeight;
 
 var img = new Image();
-img.src="flower.jpg";
-const scale = img.naturalWidth/256;
-const selWidth = 1024/scale;
-const selHeight = 768/scale;
-smallcanvas.height = Number(img.naturalHeight/scale);
-smallctx.drawImage(img,0,0,256,Number(img.naturalHeight/scale));
+var url = "flower.jpg";
+init();
 
-select.style.width =Number(1024/scale)+"px";
-select.style.height = Number(768/scale)+"px";
-
-var SelTop, SelLeft, imgTop, imgLeft;
+function rendersmall(url) {
+    img.src= url;
+    scale = img.naturalWidth/256;
+    selWidth = 1024/scale;
+    selHeight = 768/scale;
+    smallcanvas.height = Number(img.naturalHeight/scale);
+    smallctx.drawImage(img,0,0,256,Number(img.naturalHeight/scale));
+    select.style.width =Number(1024/scale)+"px";
+    select.style.height = Number(768/scale)+"px";
+}
 function render(){
     SelTop = Number(select.style.top.replace("px",""))
     SelLeft = Number(select.style.left.replace("px",""))
@@ -29,7 +32,33 @@ function render(){
 
     bigctx.drawImage(img,imgLeft,imgTop,1024,768,0,0,1024,768);
 }
-render();
+function init() {
+    rendersmall(url);
+    render();
+}
+function getFileUrl(sourceId) {
+    var url;
+    if (navigator.userAgent.indexOf("MSIE")>=1) { // IE
+        url = document.getElementById(sourceId).value;
+    } else if(navigator.userAgent.indexOf("Firefox")>0) { // Firefox
+        url = window.URL.createObjectURL(document.getElementById(sourceId).files.item(0));
+    } else if(navigator.userAgent.indexOf("Chrome")>0) { // Chrome
+        url = window.URL.createObjectURL(document.getElementById(sourceId).files.item(0));
+    }
+    return url;
+}
+
+//将本地图片显示出来
+function preImg(sourceId) {
+    var url = getFileUrl(sourceId);
+    if(confirm("确定要切换图片吗？")){
+        rendersmall(url);
+        render();
+    }
+
+}
+
+
 
 bigcanvas.addEventListener("mousedown",function (e) {
     x = e.clientX - select.offsetLeft*4;
@@ -88,10 +117,7 @@ document.addEventListener("mousemove",function (e) {
             select.style.top = posY +"px"
 
         }
-
         render();
-
-
     }
 });
 
