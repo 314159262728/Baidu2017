@@ -379,7 +379,7 @@ snake.success = function () {
 };
 //加速；
 snake.addSpeed=function () {
-    snake.intervalTime = snake.intervalTime - 100;
+    snake.intervalTime = snake.intervalTime - 200;
 };
 document.getElementById("one").addEventListener("click",function (e) {
     init();
