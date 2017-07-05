@@ -55,7 +55,7 @@ function init() {
     controlCtx.textAlign = "start";
     controlCtx.textBaseline = "top";
     controlCtx.fillStyle = "#ADADAD";
-    controlCtx.clearRect(30,150,150,200);
+    controlCtx.clearRect(30,40,150,200);
     controlCtx.fillText("得分：", 30, 150);
     controlCtx.fillText(Math.floor(snake.score), 120, 150);
     controlCtx.fillText("步数：", 30, 190);
@@ -280,7 +280,7 @@ snake.run =function () {
         snake.step+=1;
         snake.controlShow();
         //普通模式、躲避模式运行一会加速
-        if(snake.step%10==0 && snake.intervalTime>=200&&(snake.schema1||snake.schema3)){
+        if(snake.step%10==0 && snake.intervalTime>200&&(snake.schema1||snake.schema3)){
             snake.addSpeed();
             if(snake.runTime){
                 clearInterval(snake.runTime);
@@ -291,7 +291,7 @@ snake.run =function () {
         //过关模式，每一关蛇的移动速度不变
         if(snake.schema2&&snake.body.length>=10){
             snake.Level++;//关数更新，加速
-            if(snake.intervalTime>=200){
+            if(snake.intervalTime>200){
                 snake.addSpeed();
                 //清除移动
                 if(snake.runTime){
@@ -363,6 +363,8 @@ snake.over=function () {
     };
     snake.filter("<p>"+"Game Over "+"</p><br>"+"<p>"+"Score: "+Math.floor(snake.score)+"</p>");
     setTimeout(function () {
+        snake.step=0;
+        snake.score =0;
         init();
     },3000);
 
@@ -374,6 +376,8 @@ snake.success = function () {
     };
     snake.filter("<p>"+"Congratulations ！"+"</p>");
     setTimeout(function () {
+        snake.step=0;
+        snake.score =0;
         init();
     },3000);
 };
