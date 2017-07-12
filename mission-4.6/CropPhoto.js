@@ -50,7 +50,10 @@ let localize={
         if(confirm("确认切换图片吗？")){
             croper.initCanvas();//初始化画布
             ctx.drawImage(img,0,0,img.naturalWidth,img.naturalHeight,0,0,img.naturalWidth,img.naturalHeight);
+            img.onload=function(){
+                ctx.drawImage(img,0,0,img.naturalWidth,img.naturalHeight,0,0,img.naturalWidth,img.naturalHeight);
 
+            };
             croper.renderCropdiv();//初始化裁剪框
         };
     }
